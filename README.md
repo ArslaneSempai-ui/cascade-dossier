@@ -26,9 +26,8 @@ It is the third tool of the Cascade suite, after [cascade-routing](https://githu
 |---|---|
 | `npm ci --ignore-scripts` | install exactly the versions the lockfile pins, and run no install script from any dependency — the only command that needs the network: this tool downloads nothing else, ever |
 | `npm run test` | types, the README blocks, the licence inventory, and the suite — start here; it runs with the network cut |
-| `npm run measure [-- --yes-overwrite]` | the public measure: every scenario at every threshold on cases we wrote (benign look-alikes included) plus declared generated variants, sealed into `releve-public.json` and readable in `RELEVE-PUBLIC.md` — no real transaction is public, and the record says so; it refuses to overwrite a sealed one without the flag |
-| `npm run dossier -- --reports=<a.json>,... [--rhythm=90] [--as-of=<day>] [--volume=N]` | your own dispositioned alerts, rebuilt into thirty-day cases from your transactions: recall on confirmed suspicious cases and false-alert rate on benign ones per scenario and threshold, with n and interval; a sealed record and a report beside your file, never a value of yours |
-| `npm run optimise -- --from=<record> --recall=<min>` | the frontier: fewest alerts with the recall lower bound held, or `--alert-budget=<N>` for the highest bounded recall under a monthly alert budget |
+| `npm run measure [-- --yes-overwrite]` | the public dossier: the four public records of the Cascade suite, read at their home paths and judged by the five controls, sealed into `releve-public.json` and readable in `RELEVE-PUBLIC.md` — a suite record absent that day is a question said absent, never guessed, and a sealed record is not overwritten without the flag |
+| `npm run dossier -- --reports=<a.json>,... [--rhythm=90] [--as-of=<day>]` | your own chain: one to four measure:yours reports of the suite, their marks read (seals, dates, signature — never their content), judged by the five controls; the state reached is the highest control held WITHOUT A GAP, and the dossier is sealed so a reviewer verifies it without us |
 | `npm run sceller -- <record.json>` | seal a record: the fingerprint that makes a silently edited measurement fail loudly — the same fingerprint as cascade-routing |
 | `npm run verify -- <report>` | check that a report was issued by the holder of the suite's public key, `cle-publique.pem`, without asking us |
 | `npm run licences` | regenerate `LICENCES.md`, the licence of every shipped package — `--check` fails the suite when the table drifts |
@@ -60,7 +59,7 @@ reports are verified against the same public key, [`cle-publique.pem`](cle-publi
 with `npm run verify`.
 
 <!-- figures:tests -->
-**20 tests** across 3 files, counted by running the suite rather than typed here.
+**26 tests** across 4 files, counted by running the suite rather than typed here.
 <!-- /figures:tests -->
 
 ## Licence
