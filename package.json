@@ -14,7 +14,8 @@
     "measure": "node src/measure.ts",
     "sceller": "node src/sceller.ts",
     "verify": "node src/verifier-rapport.mjs",
-    "licences": "node src/licences.ts"
+    "licences": "node src/licences.ts",
+    "signer": "node src/signer.ts"
   },
   "dependencies": {},
   "devDependencies": {

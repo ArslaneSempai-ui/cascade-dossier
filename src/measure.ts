@@ -11,8 +11,9 @@
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
-import { join, basename } from "node:path";
+import { join, basename, dirname } from "node:path";
 import { isMain, refuserDrapeauxInconnus } from "./cli.ts";
+import { verifierDetachee, type SignatureDetachee } from "./signature.ts";
 import { OUTILS, CONTROLES, type OutilId, type Verdict, type Reglages } from "./controle.ts";
 import type { RapportLu } from "./rapport-lu.ts";
 import { registre as chargerRegistre, absents } from "./controles/index.ts";
@@ -26,7 +27,9 @@ const MAISON = join(homedir(), "Documents");
  *  n'a pas (encore) de relevé scellé au format des trois autres : landing.json en tient
  *  lieu, sans sceau, et le contrôle `sealed` le dira au lieu de le maquiller. */
 export const RELEVES_DE_LA_SUITE: Record<OutilId, string> = {
-  routing: join(MAISON, "cascade", "landing.json"),
+  // le vert : son relevé de RÉFÉRENCE scellé (measure.ts du vert, RELEVE_DE_REFERENCE), pas
+  // landing.json qui est le fichier de chiffres du site (ni date, ni sceau : lot du 8/09)
+  routing: join(MAISON, "cascade", "profiles-2026-08-20-coeur-rendu.json"),
   screening: join(MAISON, "cascade-screening", "releve-public.json"),
   monitoring: join(MAISON, "cascade-monitoring", "releve-public.json"),
   scoring: join(MAISON, "cascade-scoring", "releve-public.json"),
@@ -49,10 +52,32 @@ export function lireRelevePublic(outil: OutilId, chemin: string): RapportLu {
     mesureLe: date,
     sceauPorte: porte,
     sceauCalcule: empreinteDuReleve(brut),
-    relevePublic: { sceau: porte, signatureValide: null },
+    relevePublic: { sceau: porte, signatureValide: signatureDuRelevePublic(chemin, porte) },
     sourceSceau: null,
     regle: null,
   };
+}
+
+/**
+ * La signature DÉTACHÉE d'un relevé public, si le dépôt en publie une : le fichier
+ * `<releve>.signature.json` à côté (écrit par `npm run signer`, lot du 8/09), vérifiée contre
+ * la clé publique DU DÉPÔT du relevé (`cle-publique.pem` à côté), jamais contre la nôtre :
+ * chaque dépôt répond de sa propre clé. Sans fichier : null, rien à vérifier, dit tel quel ;
+ * avec un fichier qui ne se vérifie pas : false, et le contrôle `signed` ne tient pas.
+ */
+export function signatureDuRelevePublic(chemin: string, sceau: string | null): boolean | null {
+  const fichier = join(dirname(chemin), basename(chemin).replace(/\.json$/, "") + ".signature.json");
+  if (!existsSync(fichier)) return null;
+  if (sceau === null) return false;
+  const clePublique = join(dirname(chemin), "cle-publique.pem");
+  if (!existsSync(clePublique)) return false;
+  let sig: unknown;
+  try {
+    sig = JSON.parse(readFileSync(fichier, "utf8"));
+  } catch {
+    return false;
+  }
+  return verifierDetachee(sceau, sig as SignatureDetachee, readFileSync(clePublique, "utf8")).valide;
 }
 
 export type QuestionPublique = {
