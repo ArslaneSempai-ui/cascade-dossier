@@ -1,7 +1,7 @@
 {
   "version": 1,
   "date": "2026-09-05",
-  "commit": "a7ba8f3",
+  "commit": "e95f0a0",
   "controles": {
     "presents": [
       "present",
@@ -15,46 +15,46 @@
   "questions": {
     "routing": {
       "present": true,
-      "fichier": "landing.json",
-      "etat": "none",
-      "joursDepuis": null,
-      "sceau": null,
-      "signee": null,
+      "fichier": "profiles-2026-08-20-coeur-rendu.json",
+      "etat": "consistent",
+      "joursDepuis": 16,
+      "sceau": "dbf26abec438515e",
+      "signee": true,
       "verdicts": [
         {
           "controle": "present",
-          "tenu": false,
-          "detail": "landing.json: a routing report that cannot state its measurement day nor its version"
+          "tenu": true,
+          "detail": "profiles-2026-08-20-coeur-rendu.json: a routing report, measured 2026-08-20, version 1"
         },
         {
           "controle": "sealed",
-          "tenu": false,
-          "detail": "landing.json: carries no seal — present without sealed, as the contract names it"
+          "tenu": true,
+          "detail": "profiles-2026-08-20-coeur-rendu.json: seal dbf26abec438515e recomputed and matching"
         },
         {
           "controle": "signed",
-          "tenu": false,
-          "detail": "landing.json: cites no public record — nothing to verify, and nothing is called valid unverified"
+          "tenu": true,
+          "detail": "profiles-2026-08-20-coeur-rendu.json: cited record dbf26abec438515e, Ed25519 signature verified against cle-publique.pem"
         },
         {
           "controle": "fresh",
-          "tenu": false,
-          "detail": "landing.json: no measurement day, so freshness cannot be judged"
+          "tenu": true,
+          "detail": "profiles-2026-08-20-coeur-rendu.json: measured 16 day(s) before 2026-09-05, rhythm 90 — fresh"
         },
         {
           "controle": "consistent",
           "tenu": true,
-          "detail": "landing.json: alone on the routing question, source fingerprint not carried (nothing to cross-check)"
+          "detail": "profiles-2026-08-20-coeur-rendu.json: alone on the routing question, source fingerprint not carried (nothing to cross-check)"
         }
       ]
     },
     "screening": {
       "present": true,
       "fichier": "releve-public.json",
-      "etat": "sealed",
+      "etat": "consistent",
       "joursDepuis": 0,
       "sceau": "74a18ebf30d05515",
-      "signee": null,
+      "signee": true,
       "verdicts": [
         {
           "controle": "present",
@@ -68,8 +68,8 @@
         },
         {
           "controle": "signed",
-          "tenu": false,
-          "detail": "releve-public.json: cites a public record without a signature — nothing to verify, and nothing is called valid unverified"
+          "tenu": true,
+          "detail": "releve-public.json: cited record 74a18ebf30d05515, Ed25519 signature verified against cle-publique.pem"
         },
         {
           "controle": "fresh",
@@ -86,10 +86,10 @@
     "monitoring": {
       "present": true,
       "fichier": "releve-public.json",
-      "etat": "sealed",
+      "etat": "consistent",
       "joursDepuis": 0,
       "sceau": "692d499018e53e07",
-      "signee": null,
+      "signee": true,
       "verdicts": [
         {
           "controle": "present",
@@ -103,8 +103,8 @@
         },
         {
           "controle": "signed",
-          "tenu": false,
-          "detail": "releve-public.json: cites a public record without a signature — nothing to verify, and nothing is called valid unverified"
+          "tenu": true,
+          "detail": "releve-public.json: cited record 692d499018e53e07, Ed25519 signature verified against cle-publique.pem"
         },
         {
           "controle": "fresh",
@@ -121,10 +121,10 @@
     "scoring": {
       "present": true,
       "fichier": "releve-public.json",
-      "etat": "sealed",
+      "etat": "consistent",
       "joursDepuis": 0,
       "sceau": "f51ff169dbc4fd15",
-      "signee": null,
+      "signee": true,
       "verdicts": [
         {
           "controle": "present",
@@ -138,8 +138,8 @@
         },
         {
           "controle": "signed",
-          "tenu": false,
-          "detail": "releve-public.json: cites a public record without a signature — nothing to verify, and nothing is called valid unverified"
+          "tenu": true,
+          "detail": "releve-public.json: cited record f51ff169dbc4fd15, Ed25519 signature verified against cle-publique.pem"
         },
         {
           "controle": "fresh",
@@ -163,5 +163,5 @@
     "staleApres": 2,
     "auJour": "2026-09-05"
   },
-  "empreinte": "b192d33e9c4f2088"
+  "empreinte": "37f8e511de19c842"
 }
