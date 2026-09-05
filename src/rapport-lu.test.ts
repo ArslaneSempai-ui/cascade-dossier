@@ -11,7 +11,7 @@ import { generateKeyPairSync, sign as signerBrut } from "node:crypto";
 import { mkdtempSync, writeFileSync, rmSync, mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { lireRapport } from "./rapport-lu.ts";
+import { lireRapport } from "./rapport-lu-lecteur.ts";
 import { empreinteDuReleve } from "./empreinte.ts";
 import { empreinteDeCle, verifier, verifierDetachee } from "./signature.ts";
 
