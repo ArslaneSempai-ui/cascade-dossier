@@ -1,7 +1,7 @@
 {
   "version": 1,
   "date": "2026-09-05",
-  "commit": "c458b63",
+  "commit": "a7ba8f3",
   "controles": {
     "presents": [
       "present",
@@ -123,7 +123,7 @@
       "fichier": "releve-public.json",
       "etat": "sealed",
       "joursDepuis": 0,
-      "sceau": "f45373df154cc484",
+      "sceau": "f51ff169dbc4fd15",
       "signee": null,
       "verdicts": [
         {
@@ -134,7 +134,7 @@
         {
           "controle": "sealed",
           "tenu": true,
-          "detail": "releve-public.json: seal f45373df154cc484 recomputed and matching"
+          "detail": "releve-public.json: seal f51ff169dbc4fd15 recomputed and matching"
         },
         {
           "controle": "signed",
@@ -163,5 +163,5 @@
     "staleApres": 2,
     "auJour": "2026-09-05"
   },
-  "empreinte": "164e4f8816c51370"
+  "empreinte": "b192d33e9c4f2088"
 }

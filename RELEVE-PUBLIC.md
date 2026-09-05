@@ -7,6 +7,6 @@ the five controls on 2026-09-05, under the declared default rhythm of 90 day(s).
 - routing: state reached none, measured null day(s) before the reference day, no seal carried.
 - screening: state reached sealed, measured 0 day(s) before the reference day, seal 74a18ebf30d05515.
 - monitoring: state reached sealed, measured 0 day(s) before the reference day, seal 692d499018e53e07.
-- scoring: state reached sealed, measured 0 day(s) before the reference day, seal f45373df154cc484.
+- scoring: state reached sealed, measured 0 day(s) before the reference day, seal f51ff169dbc4fd15.
 
-Seal of this record: 164e4f8816c51370 · commit c458b63.
+Seal of this record: b192d33e9c4f2088 · commit a7ba8f3.
