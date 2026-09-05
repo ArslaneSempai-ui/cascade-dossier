@@ -60,7 +60,7 @@ reports are verified against the same public key, [`cle-publique.pem`](cle-publi
 with `npm run verify`.
 
 <!-- figures:tests -->
-**20 tests** across 3 files, counted by running the suite rather than typed here.
+**32 tests** across 5 files, counted by running the suite rather than typed here.
 <!-- /figures:tests -->
 
 ## Licence
