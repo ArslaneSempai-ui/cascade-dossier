@@ -1,7 +1,7 @@
 {
   "version": 1,
   "date": "2026-09-05",
-  "commit": "74a3a2f",
+  "commit": "c458b63",
   "controles": {
     "presents": [
       "present",
@@ -13,10 +13,6 @@
     "absents": []
   },
   "questions": {
-    "scoring": {
-      "present": false,
-      "fichier": "releve-public.json"
-    },
     "routing": {
       "present": true,
       "fichier": "landing.json",
@@ -121,10 +117,45 @@
           "detail": "releve-public.json: alone on the monitoring question, source fingerprint not carried (nothing to cross-check)"
         }
       ]
+    },
+    "scoring": {
+      "present": true,
+      "fichier": "releve-public.json",
+      "etat": "sealed",
+      "joursDepuis": 0,
+      "sceau": "f45373df154cc484",
+      "signee": null,
+      "verdicts": [
+        {
+          "controle": "present",
+          "tenu": true,
+          "detail": "releve-public.json: a scoring report, measured 2026-09-05, version 1"
+        },
+        {
+          "controle": "sealed",
+          "tenu": true,
+          "detail": "releve-public.json: seal f45373df154cc484 recomputed and matching"
+        },
+        {
+          "controle": "signed",
+          "tenu": false,
+          "detail": "releve-public.json: cites a public record without a signature — nothing to verify, and nothing is called valid unverified"
+        },
+        {
+          "controle": "fresh",
+          "tenu": true,
+          "detail": "releve-public.json: measured 0 day(s) before 2026-09-05, rhythm 90 — fresh"
+        },
+        {
+          "controle": "consistent",
+          "tenu": true,
+          "detail": "releve-public.json: alone on the scoring question, source fingerprint not carried (nothing to cross-check)"
+        }
+      ]
     }
   },
   "couverture": {
-    "n": 3,
+    "n": 4,
     "sur": 4
   },
   "reglages": {
@@ -132,5 +163,5 @@
     "staleApres": 2,
     "auJour": "2026-09-05"
   },
-  "empreinte": "2497928ec273023c"
+  "empreinte": "164e4f8816c51370"
 }
