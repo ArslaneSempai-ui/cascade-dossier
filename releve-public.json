@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "date": "2026-09-05",
+  "commit": "74a3a2f",
+  "controles": {
+    "presents": [
+      "present",
+      "sealed",
+      "signed",
+      "fresh",
+      "consistent"
+    ],
+    "absents": []
+  },
+  "questions": {
+    "scoring": {
+      "present": false,
+      "fichier": "releve-public.json"
+    },
+    "routing": {
+      "present": true,
+      "fichier": "landing.json",
+      "etat": "none",
+      "joursDepuis": null,
+      "sceau": null,
+      "signee": null,
+      "verdicts": [
+        {
+          "controle": "present",
+          "tenu": false,
+          "detail": "landing.json: a routing report that cannot state its measurement day nor its version"
+        },
+        {
+          "controle": "sealed",
+          "tenu": false,
+          "detail": "landing.json: carries no seal — present without sealed, as the contract names it"
+        },
+        {
+          "controle": "signed",
+          "tenu": false,
+          "detail": "landing.json: cites no public record — nothing to verify, and nothing is called valid unverified"
+        },
+        {
+          "controle": "fresh",
+          "tenu": false,
+          "detail": "landing.json: no measurement day, so freshness cannot be judged"
+        },
+        {
+          "controle": "consistent",
+          "tenu": true,
+          "detail": "landing.json: alone on the routing question, source fingerprint not carried (nothing to cross-check)"
+        }
+      ]
+    },
+    "screening": {
+      "present": true,
+      "fichier": "releve-public.json",
+      "etat": "sealed",
+      "joursDepuis": 0,
+      "sceau": "74a18ebf30d05515",
+      "signee": null,
+      "verdicts": [
+        {
+          "controle": "present",
+          "tenu": true,
+          "detail": "releve-public.json: a screening report, measured 2026-09-05, version 1"
+        },
+        {
+          "controle": "sealed",
+          "tenu": true,
+          "detail": "releve-public.json: seal 74a18ebf30d05515 recomputed and matching"
+        },
+        {
+          "controle": "signed",
+          "tenu": false,
+          "detail": "releve-public.json: cites a public record without a signature — nothing to verify, and nothing is called valid unverified"
+        },
+        {
+          "controle": "fresh",
+          "tenu": true,
+          "detail": "releve-public.json: measured 0 day(s) before 2026-09-05, rhythm 90 — fresh"
+        },
+        {
+          "controle": "consistent",
+          "tenu": true,
+          "detail": "releve-public.json: alone on the screening question, source fingerprint not carried (nothing to cross-check)"
+        }
+      ]
+    },
+    "monitoring": {
+      "present": true,
+      "fichier": "releve-public.json",
+      "etat": "sealed",
+      "joursDepuis": 0,
+      "sceau": "692d499018e53e07",
+      "signee": null,
+      "verdicts": [
+        {
+          "controle": "present",
+          "tenu": true,
+          "detail": "releve-public.json: a monitoring report, measured 2026-09-05, version 1"
+        },
+        {
+          "controle": "sealed",
+          "tenu": true,
+          "detail": "releve-public.json: seal 692d499018e53e07 recomputed and matching"
+        },
+        {
+          "controle": "signed",
+          "tenu": false,
+          "detail": "releve-public.json: cites a public record without a signature — nothing to verify, and nothing is called valid unverified"
+        },
+        {
+          "controle": "fresh",
+          "tenu": true,
+          "detail": "releve-public.json: measured 0 day(s) before 2026-09-05, rhythm 90 — fresh"
+        },
+        {
+          "controle": "consistent",
+          "tenu": true,
+          "detail": "releve-public.json: alone on the monitoring question, source fingerprint not carried (nothing to cross-check)"
+        }
+      ]
+    }
+  },
+  "couverture": {
+    "n": 3,
+    "sur": 4
+  },
+  "reglages": {
+    "rythmeJours": 90,
+    "staleApres": 2,
+    "auJour": "2026-09-05"
+  },
+  "empreinte": "2497928ec273023c"
+}
