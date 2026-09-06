@@ -39,6 +39,7 @@ test("les quatre formats de la suite se lisent, chacun vers son outil", () => {
     /* L3 de l'améthyste n'a pas livré : la convention de famille, remplacée par son message. */
     ["scoring-client-record", "scoring"],
   ];
+  assert.equal(attendus.length, 4, "les quatre outils de la suite, un format chacun");
   for (const [kind, outil] of attendus) {
     const r = lireRapport(rapportFactice(kind));
     assert.equal(r.outil, outil);

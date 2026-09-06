@@ -130,6 +130,7 @@ test("le registre plein mesure : la question de la suite absente de la machine e
      déclencher par lui — l'ancienne assertion figeait l'état transitoire (le mauvais rouge,
      leçon du lot E). La ligne du refus reste dans measure.ts, éprouvée par mutation. */
   const m = mesurePublique(REGLAGES);
+  assert.equal(m.controles.presents.length, 5, "les cinq contrôles du contrat sont présents");
   assert.equal(m.controles.absents.length, 0, "cinq contrôles présents : aucun absent dérivé");
   assert.equal(m.couverture.sur, 4, "les quatre questions de la suite, comptées même absentes");
 });

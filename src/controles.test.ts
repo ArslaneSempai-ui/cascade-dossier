@@ -55,7 +55,7 @@ test("present : daté et versionné, sinon la marque manquante est NOMMÉE", () 
   assert.match(niLunNiLautre.detail, /measurement day.*nor.*version/);
 });
 
-test("sealed : les trois issues — aucun sceau, sceau démenti par le recalcul, sceau confirmé", () => {
+test("sealed : aucun sceau, sceau démenti par le recalcul, sceau confirmé", () => {
   assert.equal(sealed.juger(lu(), [], REGLAGES).tenu, true);
   const sans = sealed.juger(lu({ sceauPorte: null }), [], REGLAGES);
   assert.equal(sans.tenu, false);
@@ -81,7 +81,10 @@ test("signed : jamais « valide » sans vérification, et la signature fausse es
 });
 
 test("fresh : la règle est fraicheur(), aux bords près, et une date future ne fait pas planter", () => {
-  /* Les bords de la couture d'abord, pour que le contrôle et elle ne divergent jamais. */
+  /* Les bords de la couture d'abord, pour que le contrôle et elle ne divergent jamais.
+     Les jours cités dans les messages sont ceux des réglages du cas, tenus ici. */
+  assert.equal(REGLAGES.rythmeJours, 90, "le cas raisonne sur un rythme de 90 jours");
+  assert.equal(REGLAGES.rythmeJours * REGLAGES.staleApres, 180, "et stale à deux rythmes : 180 jours");
   assert.equal(fraicheur("2026-06-11", REGLAGES), "fresh", "89 jours : la veille du rythme");
   assert.equal(fraicheur("2026-06-10", REGLAGES), "due", "90 jours : le rythme atteint");
   assert.equal(fraicheur("2026-03-12", REGLAGES), "stale", "180 jours : deux rythmes");
