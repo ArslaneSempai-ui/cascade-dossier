@@ -50,10 +50,11 @@ export function joursEntre(de: string, a: string): number {
   return Math.round((Date.parse(a + "T00:00:00Z") - Date.parse(de + "T00:00:00Z")) / 86_400_000);
 }
 
-/** `fresh` sous un rythme, `due` sous staleApres rythmes, `stale` au-delà ; une mesure future est refusée. */
+/** `fresh` sous une période de validité, `due` sous staleApres périodes, `stale` au-delà ; une
+ *  mesure future est refusée. */
 export function fraicheur(mesureLe: string, reglages: Reglages): Fraicheur {
-  if (!(Number.isInteger(reglages.rythmeJours) && reglages.rythmeJours > 0)) throw new Error(`rhythm must be a positive integer of days, got ${reglages.rythmeJours}`);
-  if (!(reglages.staleApres > 1)) throw new Error(`staleApres must exceed 1 rhythm, got ${reglages.staleApres}`);
+  if (!(Number.isInteger(reglages.rythmeJours) && reglages.rythmeJours > 0)) throw new Error(`the validity period must be a positive integer of days, got ${reglages.rythmeJours}`);
+  if (!(reglages.staleApres > 1)) throw new Error(`staleApres must exceed 1 validity period, got ${reglages.staleApres}`);
   const jours = joursEntre(mesureLe, reglages.auJour);
   if (jours < 0) throw new Error(`a measurement dated ${mesureLe} lies after the reference day ${reglages.auJour}: dates are not guessed`);
   if (jours < reglages.rythmeJours) return "fresh";

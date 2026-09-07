@@ -14,7 +14,7 @@ import { fraicheur, joursEntre, type Controle } from "../controle.ts";
 export const fresh: Controle = {
   id: "fresh",
   rang: 4,
-  description: "the measurement is younger than one declared recertification rhythm",
+  description: "the measurement is younger than one declared recertification validity period",
   juger: (r, _tous, reglages) => {
     if (r.mesureLe === null) {
       return { controle: "fresh", tenu: false, detail: `${r.chemin}: no measurement day, so freshness cannot be judged` };
@@ -26,7 +26,7 @@ export const fresh: Controle = {
       return { controle: "fresh", tenu: false, detail: `${r.chemin}: ${e instanceof Error ? e.message : String(e)}` };
     }
     const jours = joursEntre(r.mesureLe, reglages.auJour);
-    const detail = `${r.chemin}: measured ${jours} day(s) before ${reglages.auJour}, rhythm ${reglages.rythmeJours}: ${etat}`;
+    const detail = `${r.chemin}: measured ${jours} day(s) before ${reglages.auJour}, validity period ${reglages.rythmeJours} day(s): ${etat}`;
     return { controle: "fresh", tenu: etat === "fresh", detail };
   },
 };

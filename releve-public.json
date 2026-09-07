@@ -1,7 +1,7 @@
 {
   "version": 1,
   "date": "2026-09-07",
-  "commit": "e2cc8de",
+  "commit": "34b19c8",
   "controles": {
     "presents": [
       "present",
@@ -39,7 +39,7 @@
         {
           "controle": "fresh",
           "tenu": true,
-          "detail": "profiles-2026-08-20-coeur-rendu.json: measured 18 day(s) before 2026-09-07, rhythm 90: fresh"
+          "detail": "profiles-2026-08-20-coeur-rendu.json: measured 18 day(s) before 2026-09-07, validity period 90 day(s): fresh"
         },
         {
           "controle": "consistent",
@@ -74,7 +74,7 @@
         {
           "controle": "fresh",
           "tenu": true,
-          "detail": "releve-public.json: measured 0 day(s) before 2026-09-07, rhythm 90: fresh"
+          "detail": "releve-public.json: measured 0 day(s) before 2026-09-07, validity period 90 day(s): fresh"
         },
         {
           "controle": "consistent",
@@ -109,7 +109,7 @@
         {
           "controle": "fresh",
           "tenu": true,
-          "detail": "releve-public.json: measured 0 day(s) before 2026-09-07, rhythm 90: fresh"
+          "detail": "releve-public.json: measured 0 day(s) before 2026-09-07, validity period 90 day(s): fresh"
         },
         {
           "controle": "consistent",
@@ -144,7 +144,7 @@
         {
           "controle": "fresh",
           "tenu": true,
-          "detail": "releve-public.json: measured 0 day(s) before 2026-09-07, rhythm 90: fresh"
+          "detail": "releve-public.json: measured 0 day(s) before 2026-09-07, validity period 90 day(s): fresh"
         },
         {
           "controle": "consistent",
@@ -163,5 +163,5 @@
     "staleApres": 2,
     "auJour": "2026-09-07"
   },
-  "empreinte": "040d9dce4db3da33"
+  "empreinte": "67ff03042f26708e"
 }

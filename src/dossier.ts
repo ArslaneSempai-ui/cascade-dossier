@@ -1,7 +1,7 @@
 /**
  * LE DOSSIER — la question de la cinquième pierre :
  *
- *     npm run dossier -- --reports=<a.json>,<b.json>,... [--rhythm=90] [--as-of=YYYY-MM-DD]
+ *     npm run dossier -- --reports=<a.json>,<b.json>,... [--validity=90] [--as-of=YYYY-MM-DD]
  *     → is the whole chain measured, sealed, fresh and yours, in one file a reviewer
  *       can verify without us
  *
@@ -156,8 +156,9 @@ export function commitCourant(): { commit: string } | null {
 
 export function rendreDossier(d: DossierClient): string {
   const l: string[] = [`# The dossier: is the whole chain measured, sealed, fresh and yours?`, ``];
-  l.push(`Assembled on this machine, reference day ${d.asOf}, under a declared rhythm of `
-    + `${d.reglages.rythmeJours} day(s) (stale after ${d.reglages.staleApres} rhythms). Nothing left it.`);
+  l.push(`Assembled on this machine, reference day ${d.asOf}, under a declared validity period `
+    + `of ${d.reglages.rythmeJours} day(s) (stale after ${d.reglages.staleApres} validity periods).`
+    + ` Nothing left it.`);
   l.push(``);
   l.push(`## The header a reviewer reads first`, ``);
   l.push(`- coverage: ${d.couverture.n} of ${d.couverture.sur} questions of the suite`);
@@ -225,7 +226,7 @@ export function executer(
 }
 
 async function principal(): Promise<void> {
-  refuserDrapeauxInconnus(["--reports", "--rhythm", "--as-of"]);
+  refuserDrapeauxInconnus(["--reports", "--validity", "--rhythm", "--as-of"]);
   const arg = (nom: string) => process.argv.find((a) => a.startsWith(`--${nom}=`))?.split("=").slice(1).join("=");
   const brutReports = arg("reports");
   if (!brutReports) {
@@ -233,10 +234,10 @@ async function principal(): Promise<void> {
 Is the whole chain measured, sealed, fresh and yours, in one file a reviewer can
 verify without us.
 
-  npm run dossier -- --reports=<a.json>,<b.json>,... [--rhythm=90] [--as-of=YYYY-MM-DD]
+  npm run dossier -- --reports=<a.json>,<b.json>,... [--validity=90] [--as-of=YYYY-MM-DD]
 
 --reports   one to four <file>-measured.json written by the suite's measure:yours
---rhythm    the recertification rhythm your bank declares (days; default ${ASSUMPTIONS.rythmeJours}, assumed)
+--validity  the recertification validity period your bank declares (days; default ${ASSUMPTIONS.rythmeJours}, assumed)
 --as-of     the reference day for freshness (default: today, and the dossier writes it)
 
 It writes, next to where you run it:
@@ -247,7 +248,19 @@ The dossier cites the seals and dates of your reports, never their content.
 `);
     return;
   }
-  const reglages = reglagesAvec(arg("rhythm"), arg("as-of"));
+  /*
+   * L'ANCIEN NOM SE REFUSE EN NOMMANT LE NOUVEAU. `--rhythm` reste dans les drapeaux connus
+   * pour que le refus vienne d'ici avec son issue, et pas du garde-drapeaux avec un « unknown
+   * flag ». VOIX.md (tranché le 9/09) range « rhythm » dans le jargon interne ; le mot du
+   * lecteur est « validity period », et cascade-routing l'a pris le même jour.
+   */
+  if (arg("rhythm") !== undefined) {
+    console.error(`\n--rhythm was renamed --validity on 2026-09-13, the word a reader uses for`
+      + ` this\n  setting. Write --validity=${arg("rhythm")} instead.\n`);
+    process.exitCode = 2;
+    return;
+  }
+  const reglages = reglagesAvec(arg("validity"), arg("as-of"));
   const chemins = brutReports.split(",").map((c) => c.trim()).filter((c) => c !== "");
 
   /* Le lecteur des rapports appartient au lot D1 ; absent de cet arbre, on refuse en le

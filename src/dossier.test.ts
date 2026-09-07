@@ -7,6 +7,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { assembler, etatAtteint, executer, rendreDossier } from "./dossier.ts";
@@ -85,14 +87,31 @@ test("un registre amputé rend des contrôles absents DÉRIVÉS, et l'état s'ar
 
 /* ─── les réglages ─── */
 
-test("--rhythm et --as-of se lisent strictement, et le défaut du jour est ÉCRIT", () => {
+test("--validity et --as-of se lisent strictement, et le défaut du jour est ÉCRIT", () => {
   const g = reglagesAvec("30", "2026-09-08");
   assert.deepEqual([g.rythmeJours, g.auJour, g.staleApres], [30, "2026-09-08", 2]);
   for (const brut of ["", "0", "abc", "-3", "9.5"]) {
-    assert.throws(() => reglagesAvec(brut, undefined), /not a rhythm/);
+    assert.throws(() => reglagesAvec(brut, undefined), /not a validity period/);
   }
   assert.throws(() => reglagesAvec(undefined, "08/09/2026"), /not a day/);
   assert.equal(reglagesAvec(undefined, undefined, "2026-09-08").auJour, "2026-09-08");
+});
+
+test("l'ancien nom du drapeau se refuse en nommant le nouveau", () => {
+  /*
+   * `--rhythm` a été renommé `--validity` le 13 septembre 2026 : VOIX.md range « rhythm » dans
+   * le jargon interne, et cascade-routing a pris le même mot le même jour, pour que le lecteur
+   * qui a appris un outil ait appris l'autre. Le refus nomme le nouveau nom et réécrit la
+   * commande ; sans ce cas, il suffirait de retirer `--rhythm` des drapeaux connus pour rendre
+   * le refus muet et laisser un acheteur chercher.
+   */
+  const r = spawnSync(process.execPath, [
+    fileURLToPath(new URL("./dossier.ts", import.meta.url)),
+    "--reports=x.json", "--rhythm=90",
+  ], { encoding: "utf8" });
+  assert.equal(r.status, 2, r.stdout + r.stderr);
+  assert.match(r.stderr, /--rhythm was renamed --validity/, "le refus ne dit pas le nouveau nom");
+  assert.match(r.stderr, /--validity=90/, "le refus ne réécrit pas la commande pour le lecteur");
 });
 
 /* ─── never a value, avec témoin ─── */
