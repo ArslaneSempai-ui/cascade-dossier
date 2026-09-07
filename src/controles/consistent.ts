@@ -29,6 +29,6 @@ export const consistent: Controle = {
         detail: `${r.chemin}: the same measured dataset also appears in ${memeSource.map((x) => x.chemin).join(", ")}; one measurement must not count twice` };
     }
     return { controle: "consistent", tenu: true,
-      detail: `${r.chemin}: alone on the ${r.outil} question${r.sourceSceau === null ? ", source fingerprint not carried (nothing to cross-check)" : ", alone on its dataset"}` };
+      detail: `${r.chemin}: alone on the ${r.outil} question${r.sourceSceau === null ? ", source content hash not carried (nothing to cross-check)" : ", alone on its dataset"}` };
   },
 };

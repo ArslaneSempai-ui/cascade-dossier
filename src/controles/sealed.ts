@@ -13,7 +13,7 @@ import type { Controle } from "../controle.ts";
 export const sealed: Controle = {
   id: "sealed",
   rang: 2,
-  description: "the report carries a seal and its recomputed fingerprint confirms it",
+  description: "the report carries a seal and its recomputed content hash confirms it",
   juger: (r) => {
     if (r.sceauPorte === null) {
       return { controle: "sealed", tenu: false, detail: `${r.chemin}: carries no seal: present without sealed, as the contract names it` };

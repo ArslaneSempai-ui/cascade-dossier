@@ -1,7 +1,7 @@
 {
   "version": 1,
   "date": "2026-09-07",
-  "commit": "53b0b30",
+  "commit": "e2cc8de",
   "controles": {
     "presents": [
       "present",
@@ -44,7 +44,7 @@
         {
           "controle": "consistent",
           "tenu": true,
-          "detail": "profiles-2026-08-20-coeur-rendu.json: alone on the routing question, source fingerprint not carried (nothing to cross-check)"
+          "detail": "profiles-2026-08-20-coeur-rendu.json: alone on the routing question, source content hash not carried (nothing to cross-check)"
         }
       ]
     },
@@ -79,7 +79,7 @@
         {
           "controle": "consistent",
           "tenu": true,
-          "detail": "releve-public.json: alone on the screening question, source fingerprint not carried (nothing to cross-check)"
+          "detail": "releve-public.json: alone on the screening question, source content hash not carried (nothing to cross-check)"
         }
       ]
     },
@@ -114,7 +114,7 @@
         {
           "controle": "consistent",
           "tenu": true,
-          "detail": "releve-public.json: alone on the monitoring question, source fingerprint not carried (nothing to cross-check)"
+          "detail": "releve-public.json: alone on the monitoring question, source content hash not carried (nothing to cross-check)"
         }
       ]
     },
@@ -149,7 +149,7 @@
         {
           "controle": "consistent",
           "tenu": true,
-          "detail": "releve-public.json: alone on the scoring question, source fingerprint not carried (nothing to cross-check)"
+          "detail": "releve-public.json: alone on the scoring question, source content hash not carried (nothing to cross-check)"
         }
       ]
     }
@@ -163,5 +163,5 @@
     "staleApres": 2,
     "auJour": "2026-09-07"
   },
-  "empreinte": "db0fff0b257f7ffe"
+  "empreinte": "040d9dce4db3da33"
 }

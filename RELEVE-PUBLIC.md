@@ -9,4 +9,4 @@ the five controls on 2026-09-07, under the declared default rhythm of 90 day(s).
 - monitoring: state reached consistent, measured 0 day(s) before the reference day, seal 5e2a96e22fa0b59c.
 - scoring: state reached consistent, measured 0 day(s) before the reference day, seal 3cee43edfa7c0064.
 
-Seal of this record: db0fff0b257f7ffe · commit 53b0b30.
+Seal of this record: 040d9dce4db3da33 · commit e2cc8de.
