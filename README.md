@@ -10,7 +10,7 @@ vendor's setting". This tool measures it: several scenarios, from a bare amount 
 deviation from a peer profile, are replayed over the alerts your analysts already
 dispositioned, each alert rebuilt into a thirty-day case from your own transactions, and
 each scenario × threshold cell is read for recall on confirmed suspicious cases, false-alert
-rate on benign ones and alerts per thousand accounts — with its count and its interval, or
+rate on benign ones and alerts per thousand accounts, with its count and its interval, or
 not at all.
 
 No real transaction is public, so the public record of this tool is entirely written and
@@ -24,13 +24,13 @@ It is the third tool of the Cascade suite, after [cascade-routing](https://githu
 <!-- figures:commandes -->
 | Command | What it does, in the order that makes sense |
 |---|---|
-| `npm ci --ignore-scripts` | install exactly the versions the lockfile pins, and run no install script from any dependency — the only command that needs the network: this tool downloads nothing else, ever |
-| `npm run test` | types, the README blocks, the licence inventory, and the suite — start here; it runs with the network cut |
-| `npm run measure [-- --yes-overwrite]` | the public dossier: the four public records of the Cascade suite, read at their home paths and judged by the five controls, sealed into `releve-public.json` and readable in `RELEVE-PUBLIC.md` — a suite record absent that day is a question said absent, never guessed, and a sealed record is not overwritten without the flag |
-| `npm run dossier -- --reports=<a.json>,... [--rhythm=90] [--as-of=<day>]` | your own chain: one to four measure:yours reports of the suite, their marks read (seals, dates, signature — never their content), judged by the five controls; the state reached is the highest control held WITHOUT A GAP, and the dossier is sealed so a reviewer verifies it without us |
-| `npm run sceller -- <record.json>` | seal a record: the fingerprint that makes a silently edited measurement fail loudly — the same fingerprint as cascade-routing |
+| `npm ci --ignore-scripts` | install exactly the versions the lockfile pins, and run no install script from any dependency; the only command that needs the network: this tool downloads nothing else, ever |
+| `npm run test` | types, the README blocks, the licence inventory, and the suite. Start here; it runs with the network cut |
+| `npm run measure [-- --yes-overwrite]` | the public dossier: the four public records of the Cascade suite, read at their home paths and judged by the five controls, sealed into `releve-public.json` and readable in `RELEVE-PUBLIC.md`: a suite record absent that day is a question said absent, never guessed, and a sealed record is not overwritten without the flag |
+| `npm run dossier -- --reports=<a.json>,... [--rhythm=90] [--as-of=<day>]` | your own chain: one to four measure:yours reports of the suite, their marks read (seals, dates, signature, never their content), judged by the five controls; the state reached is the highest control held WITHOUT A GAP, and the dossier is sealed so a reviewer verifies it without us |
+| `npm run sceller -- <record.json>` | seal a record: the fingerprint that makes a silently edited measurement fail loudly; the same fingerprint as cascade-routing |
 | `npm run verify -- <report>` | check that a report was issued by the holder of the suite's public key, `cle-publique.pem`, without asking us |
-| `npm run licences` | regenerate `LICENCES.md`, the licence of every shipped package — `--check` fails the suite when the table drifts |
+| `npm run licences` | regenerate `LICENCES.md`, the licence of every shipped package; `--check` fails the suite when the table drifts |
 <!-- /figures:commandes -->
 
 ## Requirements
@@ -59,7 +59,7 @@ reports are verified against the same public key, [`cle-publique.pem`](cle-publi
 with `npm run verify`.
 
 <!-- figures:tests -->
-**50 tests** across 8 files, counted by running the suite rather than typed here.
+**54 tests** across 10 files, counted by running the suite rather than typed here.
 <!-- /figures:tests -->
 
 ## Licence
