@@ -1,25 +1,22 @@
-# Cascade · Monitoring
+# Cascade · Dossier
 
-**Which transaction-monitoring scenario suffices, at which threshold, measured on your own
-dispositioned alerts.** Nothing of yours goes up: this tool downloads nothing, your alerts
-and your transactions stay on your machine.
+**Is the whole compliance chain measured, sealed, fresh and yours: one dossier a reviewer
+verifies without us.** Nothing of yours goes up: this tool downloads nothing, and it reads
+your reports where they already sit.
 
-Transaction monitoring raises alerts; most of them are false, each one costs analyst
-minutes, and nobody can say why a scenario sits at its threshold except "that is the
-vendor's setting". This tool measures it: several scenarios, from a bare amount to the
-deviation from a peer profile, are replayed over the alerts your analysts already
-dispositioned, each alert rebuilt into a thirty-day case from your own transactions, and
-each scenario × threshold cell is read for recall on confirmed suspicious cases, false-alert
-rate on benign ones and alerts per thousand accounts, with its count and its interval, or
-not at all.
+Each tool of the suite measures one control and seals one record. Nobody can say at a glance
+whether the chain still holds as a whole: whether each record is present, sealed, signed,
+and inside its validity period. This tool reads the four records at their home paths, judges
+them by five controls, and seals one dossier that states the highest control the chain holds
+without a gap.
 
-No real transaction is public, so the public record of this tool is entirely written and
-generated, and says so: cases we wrote (with their benign look-alikes) and seeded variants,
-kept apart. The measure that counts is yours, on your machine.
+It is the fifth tool of the Cascade suite. The first,
+[cascade-routing](https://github.com/ArslaneSempai-ui/cascade-routing), measures which
+extraction tier suffices per field. Same method, same seal, same key.
 
-It is the third tool of the Cascade suite, after [cascade-routing](https://github.com/ArslaneSempai-ui/cascade-routing)
-(which extraction tier suffices per field) and [cascade-screening](https://github.com/ArslaneSempai-ui/cascade-screening)
-(which name matcher, at which threshold). Same method, same seal, same key.
+The Dossier writes no measurement of its own. It reads the marks of the four records, their
+seals, dates and signatures, never their content, and says which control holds and which
+does not. A record absent on the day is a question said absent, and it is never guessed.
 
 <!-- figures:commandes -->
 | Command | What it does, in the order that makes sense |
@@ -59,7 +56,7 @@ reports are verified against the same public key, [`cle-publique.pem`](cle-publi
 with `npm run verify`.
 
 <!-- figures:tests -->
-**54 tests** across 10 files, counted by running the suite rather than typed here.
+**56 tests** across 11 files, counted by running the suite rather than typed here.
 <!-- /figures:tests -->
 
 ## Licence
