@@ -26,7 +26,7 @@ export const fresh: Controle = {
       return { controle: "fresh", tenu: false, detail: `${r.chemin}: ${e instanceof Error ? e.message : String(e)}` };
     }
     const jours = joursEntre(r.mesureLe, reglages.auJour);
-    const detail = `${r.chemin}: measured ${jours} day(s) before ${reglages.auJour}, rhythm ${reglages.rythmeJours} — ${etat}`;
+    const detail = `${r.chemin}: measured ${jours} day(s) before ${reglages.auJour}, rhythm ${reglages.rythmeJours}: ${etat}`;
     return { controle: "fresh", tenu: etat === "fresh", detail };
   },
 };

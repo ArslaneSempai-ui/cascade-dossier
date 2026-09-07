@@ -54,7 +54,7 @@ const ATTENDUES = ["alg", "cle", "valeur"];
 
 /** Les refus communs aux deux formes : algorithme, clés du bloc, empreinte de la clé. */
 function refusDeBloc(sig: Record<string, unknown>, clePubliquePem: string): string | null {
-  if (sig.alg !== "Ed25519") return `unexpected algorithm "${String(sig.alg)}" — only Ed25519 is recognised.`;
+  if (sig.alg !== "Ed25519") return `unexpected algorithm "${String(sig.alg)}": only Ed25519 is recognised.`;
   const inconnues = Object.keys(sig).filter((k) => !ATTENDUES.includes(k));
   if (inconnues.length > 0) {
     return `the signature block carries ${inconnues.length} field(s) nothing signs: ${inconnues.join(", ")}.\n`

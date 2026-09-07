@@ -16,11 +16,11 @@ export const sealed: Controle = {
   description: "the report carries a seal and its recomputed fingerprint confirms it",
   juger: (r) => {
     if (r.sceauPorte === null) {
-      return { controle: "sealed", tenu: false, detail: `${r.chemin}: carries no seal — present without sealed, as the contract names it` };
+      return { controle: "sealed", tenu: false, detail: `${r.chemin}: carries no seal: present without sealed, as the contract names it` };
     }
     if (r.sceauPorte !== r.sceauCalcule) {
       return { controle: "sealed", tenu: false,
-        detail: `${r.chemin}: the carried seal ${r.sceauPorte} does not match the recomputed ${r.sceauCalcule} — the content moved after sealing` };
+        detail: `${r.chemin}: the carried seal ${r.sceauPorte} does not match the recomputed ${r.sceauCalcule}: the content moved after sealing` };
     }
     return { controle: "sealed", tenu: true, detail: `${r.chemin}: seal ${r.sceauPorte} recomputed and matching` };
   },

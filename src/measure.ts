@@ -143,7 +143,7 @@ export function rendrePublic(m: ReturnType<typeof mesurePublique>): string {
   for (const outil of OUTILS) {
     const q = m.questions[outil];
     if (!q.present) {
-      l.push(`- ${outil}: ABSENT — ${q.fichier} does not exist yet; said, not guessed. Re-measure`);
+      l.push(`- ${outil}: ABSENT. ${q.fichier} does not exist yet; said, not guessed. Re-measure`);
       l.push(`  with --yes-overwrite when it arrives.`);
     } else {
       l.push(`- ${outil}: state reached ${q.etat}, measured ${q.joursDepuis} day(s) before the`
@@ -151,7 +151,7 @@ export function rendrePublic(m: ReturnType<typeof mesurePublique>): string {
     }
   }
   if (m.controles.absents.length) {
-    l.push(``, `Controls absent from the registry: ${m.controles.absents.join(", ")} — derived, not recited.`);
+    l.push(``, `Controls absent from the registry: ${m.controles.absents.join(", ")}; derived, not recited.`);
   }
   l.push(``, `Seal of this record: ${m.empreinte ?? "(sealed on write)"}${m.commit ? ` · commit ${m.commit}` : ""}.`);
   l.push(``);
@@ -179,7 +179,7 @@ async function principal(): Promise<void> {
   m.empreinte = empreinteDuReleve(m);
   writeFileSync(cible, JSON.stringify(m, null, 2) + "\n");
   writeFileSync(join(ici, "RELEVE-PUBLIC.md"), rendrePublic(m));
-  console.log(`releve-public.json sealed ${m.empreinte} — coverage ${m.couverture.n}/${m.couverture.sur}, `
+  console.log(`releve-public.json sealed ${m.empreinte}; coverage ${m.couverture.n}/${m.couverture.sur}, `
     + `controls ${m.controles.presents.length}/${CONTROLES.length}.`);
 }
 

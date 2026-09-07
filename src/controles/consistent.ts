@@ -22,11 +22,11 @@ export const consistent: Controle = {
       : tous.filter((x) => x !== r && x.sourceSceau === r.sourceSceau);
     if (memeOutil.length > 0) {
       return { controle: "consistent", tenu: false,
-        detail: `${r.chemin}: ${memeOutil.length + 1} reports answer the ${r.outil} question (${memeOutil.map((x) => x.chemin).join(", ")}) — the dossier cannot say which one stands` };
+        detail: `${r.chemin}: ${memeOutil.length + 1} reports answer the ${r.outil} question (${memeOutil.map((x) => x.chemin).join(", ")}); the dossier cannot say which one stands` };
     }
     if (memeSource.length > 0) {
       return { controle: "consistent", tenu: false,
-        detail: `${r.chemin}: the same measured dataset also appears in ${memeSource.map((x) => x.chemin).join(", ")} — one measurement must not count twice` };
+        detail: `${r.chemin}: the same measured dataset also appears in ${memeSource.map((x) => x.chemin).join(", ")}; one measurement must not count twice` };
     }
     return { controle: "consistent", tenu: true,
       detail: `${r.chemin}: alone on the ${r.outil} question${r.sourceSceau === null ? ", source fingerprint not carried (nothing to cross-check)" : ", alone on its dataset"}` };

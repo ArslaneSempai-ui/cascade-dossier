@@ -54,7 +54,7 @@ export function lireRapport(chemin: string, clePubliquePem?: string): RapportLu 
   }
   const kind = chaineOuNull(json.kind);
   if (kind === null) {
-    throw new Error(`${nom}: no "kind" field — this JSON does not say which tool wrote it.\n`
+    throw new Error(`${nom}: no "kind" field; this JSON does not say which tool wrote it.\n`
       + `  Accepted: ${Object.keys(KIND_VERS_OUTIL).join(", ")}.`);
   }
   const outil = KIND_VERS_OUTIL[kind];

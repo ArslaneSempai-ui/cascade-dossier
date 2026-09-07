@@ -60,14 +60,14 @@ export function reglagesAvec(brutRythme?: string, brutAsOf?: string,
   if (brutRythme !== undefined) {
     if (!/^\d{1,4}$/.test(brutRythme) || Number(brutRythme) < 1) {
       throw new Error(`--rhythm=${brutRythme} is not a rhythm this tool reads. It wants a whole\n`
-        + `  number of days, like --rhythm=90 — the recertification rhythm your bank declares.`);
+        + `  number of days, like --rhythm=90, the recertification rhythm your bank declares.`);
     }
     rythmeJours = Number(brutRythme);
   }
   let auJour = aujourdHui;
   if (brutAsOf !== undefined) {
     if (!ISO_JOUR.test(brutAsOf) || Number.isNaN(Date.parse(brutAsOf))) {
-      throw new Error(`--as-of=${brutAsOf} is not a day this tool reads. It wants ISO YYYY-MM-DD —\n`
+      throw new Error(`--as-of=${brutAsOf} is not a day this tool reads. It wants ISO YYYY-MM-DD,\n`
         + `  the reference day freshness is judged against, written into the dossier.`);
     }
     auJour = brutAsOf;

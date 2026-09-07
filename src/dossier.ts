@@ -179,17 +179,17 @@ export function rendreDossier(d: DossierClient): string {
   ]);
   l.push(table(entetes, lignes), ``);
   l.push(`A state is the highest control held WITHOUT A GAP, in rank order: a signed but`);
-  l.push(`unsealed report reaches "present", not "signed" — a chain holds by its lowest link.`);
+  l.push(`unsealed report reaches "present", not "signed"; a chain holds by its lowest link.`);
   l.push(``);
   l.push(`## What is missing, question by question`, ``);
   for (const q of d.questions) {
     l.push(q.manquePourSuivant === null
-      ? `- ${q.outil}: nothing — every control of the registry holds.`
+      ? `- ${q.outil}: nothing; every control of the registry holds.`
       : `- ${q.outil}: ${q.manquePourSuivant}`);
   }
   if (d.controlesAbsents.length) {
     l.push(``, `Controls absent from the registry, said rather than guessed: `
-      + `${d.controlesAbsents.join(", ")} — the states above are bounded by what could be judged.`);
+      + `${d.controlesAbsents.join(", ")}; the states above are bounded by what could be judged.`);
   }
   l.push(``);
   l.push(`## Provenance`, ``);
@@ -198,7 +198,7 @@ export function rendreDossier(d: DossierClient): string {
   l.push(`- this dossier cites the seals and dates of the reports, never their content: no`);
   l.push(`  grid cell, no amount, no identifier of yours can appear here, because none enters`);
   l.push(`  the mark-reading this dossier is built from.`);
-  l.push(`- seal of this dossier: ${d.empreinte ?? "(sealed after rendering — see the .json beside this file)"}`
+  l.push(`- seal of this dossier: ${d.empreinte ?? "(sealed after rendering; see the .json beside this file)"}`
     + (d.code ? ` · code at commit ${d.code.commit}` : ""));
   l.push(``);
   l.push(`Verify without us: npm run verify -- dossier-${d.asOf}.json recomputes the seal.`);
@@ -241,7 +241,7 @@ verify without us.
 
 It writes, next to where you run it:
   dossier-<as-of>.md     the dossier a reviewer reads
-  dossier-<as-of>.json   the sealed record — npm run verify recomputes its seal
+  dossier-<as-of>.json   the sealed record; npm run verify recomputes its seal
 
 The dossier cites the seals and dates of your reports, never their content.
 `);
@@ -270,10 +270,10 @@ The dossier cites the seals and dates of your reports, never their content.
   }
 
   const { dossier, cheminMd, cheminJson } = executer(chemins, lireRapport, r, reglages);
-  console.log(`\n${dossier.questions.length} question(s) — coverage ${dossier.couverture.n}/${dossier.couverture.sur}, `
+  console.log(`\n${dossier.questions.length} question(s): coverage ${dossier.couverture.n}/${dossier.couverture.sur}, `
     + `seals ${dossier.sceauxValides.n}/${dossier.sceauxValides.sur}, reference day ${dossier.asOf}.`);
   console.log(`  ${cheminMd}`);
-  console.log(`  ${cheminJson} — seal ${dossier.empreinte}\n`);
+  console.log(`  ${cheminJson}, seal ${dossier.empreinte}\n`);
 }
 
 /* Un refus destiné au client ne sort pas en trace de pile. */

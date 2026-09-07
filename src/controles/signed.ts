@@ -19,11 +19,11 @@ export const signed: Controle = {
     if (r.relevePublic.signatureValide === null) {
       const pourquoi = r.relevePublic.sceau === null
         ? "cites no public record" : "cites a public record without a signature";
-      return { controle: "signed", tenu: false, detail: `${r.chemin}: ${pourquoi} — nothing to verify, and nothing is called valid unverified` };
+      return { controle: "signed", tenu: false, detail: `${r.chemin}: ${pourquoi}: nothing to verify, and nothing is called valid unverified` };
     }
     if (r.relevePublic.signatureValide === false) {
       return { controle: "signed", tenu: false,
-        detail: `${r.chemin}: the cited record's signature does NOT verify against this repository's key — worse than none, and said apart` };
+        detail: `${r.chemin}: the cited record's signature does NOT verify against this repository's key: worse than none, and said apart` };
     }
     return { controle: "signed", tenu: true,
       detail: `${r.chemin}: cited record ${r.relevePublic.sceau}, Ed25519 signature verified against cle-publique.pem` };
