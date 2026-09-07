@@ -37,7 +37,7 @@ Node 24 or newer, on **macOS or Linux**. Windows has not been tested and is not 
 ## What leaves your machine
 
 Nothing. This tool has no list to download and no model to fetch: every command runs with
-the network cut, and a test walks the sources so that no module ever grows a network call
+the network cut, and a test reads every source so that no module ever grows a network call
 (`src/frontiere.test.ts`).
 
 ## What is measured, assumed, synthetic
@@ -47,7 +47,7 @@ an amount or a count into a score, the cash reporting threshold, analyst minutes
 and analyst cost are **assumed** and declared in `src/assumptions.ts`. The public record is
 **written and generated**: cases we authored and seeded variants, measured apart, never
 merged into anything measured on your data. Below five confirmed suspicious cases, no
-recall is quoted: the report says so.
+recall is quoted, and the report states why.
 
 ## Seals and signatures
 
